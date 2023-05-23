@@ -9,12 +9,20 @@ const reservations = require('./reservations.json');
 // use json middleware
 app.use(express.json());
 
-// list all courses
+/***
+ * Endpoint GET /courses
+ * Get all the courses
+ * @returns {Array} list of courses
+ */
 app.get('/courses', (req, res) => {
     res.status(200).json(courses);
 });
 
-// get details of a particular course
+/***
+ * Endpoint GET /courses/:id
+ * Get all the details of a particular course
+ * @returns {Object} course details
+ */
 app.get('/courses/:id', (req, res) => {
     const course = courses.find(course => course.id === req.params.id);
     if (course) {
@@ -24,7 +32,11 @@ app.get('/courses/:id', (req, res) => {
     }
 });
 
-// delete a course
+/***
+ * Endpoint DELETE /courses/:id
+ * Delete a particular course
+ * @returns {Object} deleted course
+ */
 app.delete('/courses/:id', (req, res) => {
     const course = courses.find(course => course.id === req.params.id);
     if (course) {
@@ -35,7 +47,11 @@ app.delete('/courses/:id', (req, res) => {
     }
 });
 
-// add a reservation
+/***
+ * Endpoint POST /reservations
+ * Create a new reservation for a course
+ * @returns {Object} reservation details
+ */
 app.post('/reservations', (req, res) => {
     const course = courses.find(course => course.id === req.body.courseId);
     if (!course) {
@@ -52,12 +68,20 @@ app.post('/reservations', (req, res) => {
     res.status(200).json(reservation);
 });
 
-// list all reservations
+/***
+ * Endpoint GET /reservations
+ * Get all the reservations
+ * @returns {Array} list of reservations
+ */
 app.get('/reservations', (req, res) => {
     res.status(200).json(reservations);
 });
 
-// get details of a particular reservation
+/***
+ * Endpoint GET /reservations/:id
+ * Get all the details of a particular reservation
+ * @returns {Object} reservation details
+ */
 app.get('/reservations/:id', (req, res) => {
     const reservation = reservations.find(reservation => reservation.id === req.params.id);
     if (!reservation) {
@@ -66,7 +90,11 @@ app.get('/reservations/:id', (req, res) => {
     res.status(200).json(reservation);
 });
 
-// edit a reservation
+/***
+ * Endpoint PUT /reservations/:id
+ * Update a particular reservation
+ * @returns {Object} updated reservation
+ */
 app.put('/reservations/:id', (req, res) => {
     const reservation = reservations.find(reservation => reservation.id === req.params.id);
     if (!reservation) {
@@ -79,7 +107,11 @@ app.put('/reservations/:id', (req, res) => {
     res.status(200).json(reservation);
 });
 
-// delete a reservation
+/***
+ * Endpoint DELETE /reservations/:id
+ * Delete a particular reservation
+ * @returns {Object} deleted reservation
+ */
 app.delete('/reservations/:id', (req, res) => {
     const reservation = reservations.find(reservation => reservation.id === req.params.id);
     if (!reservation) {
