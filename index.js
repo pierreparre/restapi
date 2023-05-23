@@ -24,7 +24,7 @@ app.get('/courses', (req, res) => {
  * @returns {Object} course details
  */
 app.get('/courses/:id', (req, res) => {
-    const course = courses.find(course => course.id === req.params.id);
+    const course = courses.find(course => course.id === parseInt(req.params.id));
     if (course) {
         res.status(200).json(course);
     } else {
@@ -38,13 +38,16 @@ app.get('/courses/:id', (req, res) => {
  * @returns {Object} deleted course
  */
 app.delete('/courses/:id', (req, res) => {
-    const course = courses.find(course => course.id === req.params.id);
-    if (course) {
-        courses.splice(courses.indexOf(course), 1);
-        res.status(200).json(course);
-    } else {
+    const course = courses.find(course => course.id === parseInt(req.params.id));
+    if (!course) {
         res.status(404).json({message: 'Course not found'});
     }
+    courses.forEach(course => {
+        if (course.id === parseInt(req.params.id)) {
+            courses.splice(courses.indexOf(course), 1);
+        }
+    });
+    res.status(200).json(course);
 });
 
 /***
@@ -53,13 +56,13 @@ app.delete('/courses/:id', (req, res) => {
  * @returns {Object} reservation details
  */
 app.post('/reservations', (req, res) => {
-    const course = courses.find(course => course.id === req.body.courseId);
+    const course = courses.find(course => course.id === parseInt(req.body.courseId));
     if (!course) {
         res.status(404).json({message: 'Course not found'});
     }
 
     const reservation = {
-        id: reservations.length + 1,
+        id: reservations.pop().id + 1,
         courseId: course.id,
         studentName: req.body.studentName,
         studentNumber: req.body.studentNumber
@@ -83,7 +86,7 @@ app.get('/reservations', (req, res) => {
  * @returns {Object} reservation details
  */
 app.get('/reservations/:id', (req, res) => {
-    const reservation = reservations.find(reservation => reservation.id === req.params.id);
+    const reservation = reservations.find(reservation => reservation.id === parseInt(req.params.id));
     if (!reservation) {
         res.status(404).json({message: 'Reservation not found'});
     }
@@ -96,7 +99,7 @@ app.get('/reservations/:id', (req, res) => {
  * @returns {Object} updated reservation
  */
 app.put('/reservations/:id', (req, res) => {
-    const reservation = reservations.find(reservation => reservation.id === req.params.id);
+    const reservation = reservations.find(reservation => reservation.id === parseInt(req.params.id));
     if (!reservation) {
         res.status(404).json({message: 'Reservation not found'});
     }
@@ -113,11 +116,15 @@ app.put('/reservations/:id', (req, res) => {
  * @returns {Object} deleted reservation
  */
 app.delete('/reservations/:id', (req, res) => {
-    const reservation = reservations.find(reservation => reservation.id === req.params.id);
+    const reservation = reservations.find(reservation => reservation.id === parseInt(req.params.id));
     if (!reservation) {
         res.status(404).json({message: 'Reservation not found'});
     }
-    reservations.splice(reservations.indexOf(reservation), 1);
+    reservations.forEach(reservation => {
+        if (reservation.id === parseInt(req.params.id)) {
+            reservations.splice(reservations.indexOf(reservation), 1);
+        }
+    });
     res.status(200).json(reservation);
 });
 
