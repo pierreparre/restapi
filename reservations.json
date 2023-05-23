@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "courseId": 1,
+        "studentName": "Pierre Parré",
+        "studentNumber": "123456789"
+    },
+    {
+        "id": 2,
+        "courseId": 1,
+        "studentName": "Martin Harazim",
+        "studentNumber": "987654321"
+    },
+    {
+        "id": 3,
+        "courseId": 2,
+        "studentName": "Pierre Parré",
+        "studentNumber": "123456789"
+    },
+    {
+        "id": 4,
+        "courseId": 2,
+        "studentName": "Martin Harazim",
+        "studentNumber": "987654321"
+    },
+    {
+        "id": 5,
+        "courseId": 3,
+        "studentName": "Pierre Parré",
+        "studentNumber": "123456789"
+    },
+    {
+        "id": 6,
+        "courseId": 3,
+        "studentName": "Martin Harazim",
+        "studentNumber": "987654321"
+    }
+]

@@ -1,0 +1,67 @@
+[
+    {
+        "id": 1,
+        "nom": "Réseau",
+        "nombreSeances": 10,
+        "dateDebut": "2022-09-01",
+        "dateFin": "2023-07-15",
+        "typeCours": "Présentiel",
+        "lieuCours": "Salle 18",
+        "responsableCours": "Cédric Simonneau",
+        "niveauRequis": "Avancé",
+        "coursPrerequis": [
+            5
+        ]
+    },
+    {
+        "id": 2,
+        "nom": "Cyber",
+        "nombreSeances": 8,
+        "dateDebut": "2022-09-01",
+        "dateFin": "2023-07-15",
+        "typeCours": "visio",
+        "lieuCours": "En ligne",
+        "responsableCours": "Jane Smith",
+        "niveauRequis": "Intermédiaire",
+        "coursPrerequis": [
+            1,
+            5
+        ]
+    },
+    {
+        "id": 3,
+        "nom": "Dev",
+        "nombreSeances": 8,
+        "dateDebut": "2022-09-01",
+        "dateFin": "2023-07-15",
+        "typeCours": "visio",
+        "lieuCours": "En ligne",
+        "responsableCours": "Jane Smith",
+        "niveauRequis": "Intermédiaire",
+        "coursPrerequis": [
+            5
+        ]
+    },
+    {
+        "id": 4,
+        "nom": "Gestion de Projet",
+        "nombreSeances": 8,
+        "dateDebut": "2022-09-01",
+        "dateFin": "2023-07-15",
+        "typeCours": "visio",
+        "lieuCours": "En ligne",
+        "responsableCours": "Jane Smith",
+        "niveauRequis": "Intermédiaire"
+    },
+    {
+        "id": 5,
+        "nom": "Anglais",
+        "nombreSeances": 8,
+        "dateDebut": "2022-09-01",
+        "dateFin": "2023-07-15",
+        "typeCours": "visio",
+        "lieuCours": "En ligne",
+        "responsableCours": "Jane Smith",
+        "niveauRequis": "Intermédiaire"
+    }
+]
