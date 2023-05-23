@@ -66,3 +66,29 @@ app.get('/reservations/:id', (req, res) => {
     res.status(200).json(reservation);
 });
 
+// edit a reservation
+app.put('/reservations/:id', (req, res) => {
+    const reservation = reservations.find(reservation => reservation.id === req.params.id);
+    if (!reservation) {
+        res.status(404).json({message: 'Reservation not found'});
+    }
+    // check if the parameters has been passed
+    if (req.body.studentName) reservation.studentName = req.body.studentName;
+    if (req.body.studentNumber) reservation.studentNumber = req.body.studentNumber;
+
+    res.status(200).json(reservation);
+});
+
+// delete a reservation
+app.delete('/reservations/:id', (req, res) => {
+    const reservation = reservations.find(reservation => reservation.id === req.params.id);
+    if (!reservation) {
+        res.status(404).json({message: 'Reservation not found'});
+    }
+    reservations.splice(reservations.indexOf(reservation), 1);
+    res.status(200).json(reservation);
+});
+
+app.listen(port, () => {
+    console.log(`Listening on ${port}`);
+});
